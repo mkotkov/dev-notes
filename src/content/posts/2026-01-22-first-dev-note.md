@@ -1,8 +1,10 @@
 ---
 title: "Why I Started a Public Dev Journal"
 date: 2026-01-22
+category: "Astro"
 tags: [meta, journaling]
-draft: true
+summary: "Why I Started a Public Dev Journal"
+draft: false
 ---
 
 ## Context
@@ -22,3 +24,4 @@ It’s a developer journal.
 
 If this works, I’ll keep going.
 If not — I’ll stop without regret.
+

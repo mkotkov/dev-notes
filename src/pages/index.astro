@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import '../styles/global.css';
+
+const posts = await getCollection("posts", ({ data }) => {
+  return data.draft !== true;
+});
+
+// sort posts by date descending
+posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Dev Notes by m.kotkov</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+<body class="bg-gray-100 text-black flex justify-center h-screen">
+    <main>
+      <h1 class="text-6xl font-bold mt-20 mb-8">Dev Notes</h1>
+      <ul>
+        {posts.map((post) => (
+          <li class="bg-white cursor-pointer my-4 text-2xl border-b p-3 hover:bg-gray-50 rounded-lg transition-shadow shadow-sm hover:shadow-md">
+            <a href={`/posts/${post.slug}`}>
+              {post.data.title}
+            </a>
+            <small>
+              {" "}
+              — {post.data.date.toDateString()}
+            </small>
+          </li>
+        ))}
+      </ul>
+    </main>
+  </body>
+</html>
