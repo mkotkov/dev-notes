@@ -1,0 +1,32 @@
+---
+interface Props {
+  title: string;
+  date: Date;
+  slug: string;
+  tags?: string[];
+}
+
+const { title, date, slug, tags } = Astro.props;
+---
+
+<article class=" w-wax-8 border rounded-xl p-4 mb-4">
+  <h3 class="text-2xl font-semibold">
+    <a href={`/posts/${slug}`}>
+      {title}
+    </a>
+  </h3>
+
+  <time class="text-sm text-gray-400">
+    {date.toLocaleDateString("ru-RU")}
+  </time>
+
+  {tags && (
+    <ul class="flex gap-2 mt-2">
+      {tags.map(tag => (
+        <li class="text-xs bg-gray-700 px-2 py-1 rounded">
+          {tag}
+        </li>
+      ))}
+    </ul>
+  )}
+</article>

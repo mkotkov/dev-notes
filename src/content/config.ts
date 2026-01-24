@@ -6,8 +6,8 @@ const posts = defineCollection({
     title: z.string(),
     date: z.date(),
     draft: z.boolean().default(false),
-    category: z.string().optional(),         // одна категория
-    tags: z.array(z.string()).default([]),   // несколько тегов
+    category: z.string().optional(),         
+    tags: z.array(z.string()).default([]),   
     summary: z.string().optional()
   }),
 });

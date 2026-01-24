@@ -1,25 +1,16 @@
 ---
 import '../styles/global.css';
+import PageLayout from './PageLayout.astro';
 
 const { title, date, tags} = Astro.props;
 
 ---
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>{title}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head>
-
-  <body class=" flex items-center justify-center min-h-screen bg-gray-100 p-4">
-    <main>
+<PageLayout title={title}>
       <article>
         <header>
           <h1 class="post-title">{title}</h1>
 
-          <p class="post-date"
+          <p class="post-date">
             <time datetime={date.toISOString()}>
               {date.toDateString()}
             </time>
@@ -38,6 +29,4 @@ const { title, date, tags} = Astro.props;
           <slot />
         </section>
       </article>
-    </main>
-  </body>
-</html>
+</PageLayout>

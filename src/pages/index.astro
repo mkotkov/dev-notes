@@ -1,6 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 import '../styles/global.css';
+import PageLayout from '../layouts/PageLayout.astro';
+import PostCart from "../components/PostCart.astro";
+import Nav from "../components/Nav.astro"
 
 const posts = await getCollection("posts", ({ data }) => {
   return data.draft !== true;
@@ -10,30 +13,23 @@ const posts = await getCollection("posts", ({ data }) => {
 posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Dev Notes by m.kotkov</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head>
+<PageLayout title="Home">
+  <div class="flex min-h-screen">
+    <Nav />
 
-<body class="bg-gray-100 text-black flex justify-center h-screen">
-    <main>
-      <h1 class="text-6xl font-bold mt-20 mb-8">Dev Notes</h1>
-      <ul>
+    <div>
+      <div class="mb-12">
+        <h2 class="text-4xl font-semibold mb-4">Recent Posts</h2>
+      </div>
+      <div class="flex flow max-w-xl gap-3">
         {posts.map((post) => (
-          <li class="bg-white cursor-pointer my-4 text-2xl border-b p-3 hover:bg-gray-50 rounded-lg transition-shadow shadow-sm hover:shadow-md">
-            <a href={`/posts/${post.slug}`}>
-              {post.data.title}
-            </a>
-            <small>
-              {" "}
-              — {post.data.date.toDateString()}
-            </small>
-          </li>
+          <PostCart  
+          title={post.data.title}
+          date={post.data.date}
+          slug={post.slug}
+          tags={post.data.tags} />
         ))}
-      </ul>
-    </main>
-  </body>
-</html>
+      </div>
+    </div>
+  </div>
+</PageLayout>

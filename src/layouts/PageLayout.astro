@@ -1,0 +1,21 @@
+---
+import "../styles/global.css";
+
+import Header from "../components/Header.astro"
+import BaseHead from "../components/BaseHead.astro";
+const { title } = Astro.props;
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title = {title} />
+  </head>
+  <body class="mx-auto max-w-screen-xl p-5 space-y-24 pb-16 pt-16">
+    <Header />
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>

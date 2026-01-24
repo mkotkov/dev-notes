@@ -1,0 +1,28 @@
+---
+import Container from "./Container.astro";
+---
+<header
+  id="header"
+  class="fixed top-0 w-full max-w-6xl h-16 z-50
+        backdrop-blur-lg
+        bg-black/60
+        border-b 
+        border-white/20
+        shadow-sm"
+>
+  <Container size="xl">
+    <div class="flex h-16 items-center justify-between">
+      <a href="/" class="flex items-center gap-2">
+        <img
+          src="/logo.svg"
+          alt="Dev Notes"
+          class="h-8 w-auto"
+        />
+      </a>
+
+      <p class="text-sm text-whit/60">
+        by m.kotkov
+      </p>
+    </div>
+  </Container>
+</header>
