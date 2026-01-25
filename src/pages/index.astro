@@ -2,34 +2,53 @@
 import { getCollection } from "astro:content";
 import '../styles/global.css';
 import PageLayout from '../layouts/PageLayout.astro';
-import PostCart from "../components/PostCart.astro";
-import Nav from "../components/Nav.astro"
+import PostCard from '../components/PostCard.astro';
+import SearchBar from '../components/SearchBar.astro';
+import Nav from '../components/Nav.astro';
 
-const posts = await getCollection("posts", ({ data }) => {
-  return data.draft !== true;
-});
-
-// sort posts by date descending
+const posts = await getCollection("posts", ({ data }) => !data.draft);
 posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <PageLayout title="Home">
-  <div class="flex min-h-screen">
+
+  <SearchBar placeholderText="Search posts"/>
+
+  <div class="flex w-full min-h-screen">
     <Nav />
 
-    <div>
+    <div class="w-xl">
       <div class="mb-12">
         <h2 class="text-4xl font-semibold mb-4">Recent Posts</h2>
       </div>
-      <div class="flex flow max-w-xl gap-3">
-        {posts.map((post) => (
-          <PostCart  
-          title={post.data.title}
-          date={post.data.date}
-          slug={post.slug}
-          tags={post.data.tags} />
+
+      <div class="grid grid-cols-2 gap-4" data-posts>
+        {posts.map(post => (
+          <PostCard
+            title={post.data.title}
+            summary={post.data.summary}
+            date={post.data.date}
+            slug={post.slug}
+            tags={post.data.tags}
+          />
         ))}
+      </div>
+
+      <div class="mt-4 text-center text-gray-500 hidden" data-no-results>
+        Nothing found
       </div>
     </div>
   </div>
+
 </PageLayout>
+
+<script type="module"  >
+  import { SearchController } from '/src/lib/SearchController.js';
+
+  SearchController({
+    postsSelector: '[data-posts]',
+    postSelector: '[data-post]',
+    noResultsSelector: '[data-no-results]',
+    debounceMs: 150
+  });
+</script>

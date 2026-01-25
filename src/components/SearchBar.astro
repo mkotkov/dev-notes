@@ -1,0 +1,48 @@
+---
+interface Props {
+  placeholderText?: string;
+}
+
+const { placeholderText = "Search..." } = Astro.props;
+---
+
+<div class="relative w-full max-w-md mx-auto mb-8">
+  <input
+    id="search"
+    type="text"
+    placeholder={placeholderText}
+    class=" bg-black w-full px-10 py-2 rounded border border-gray-300 focus:outline-none focus:ring"
+    autocomplete="off"
+    spellcheck="true"
+  />
+  <button
+    id="clear"
+    class="absolute right-0 top-0 w-10 h-full hidden"
+    aria-label="Clear"
+  >
+    ✕
+  </button>
+</div>
+
+<script defer lang="ts">
+  document.addEventListener('DOMContentLoaded', () => {
+    const input = document.querySelector<HTMLInputElement>('#search');
+    const clear = document.querySelector<HTMLButtonElement>('#clear');
+
+    if (!input || !clear) return;
+
+    input.addEventListener('input', () => {
+      clear.hidden = input.value.length === 0;
+      const event = new CustomEvent('search', { detail: input.value });
+      document.dispatchEvent(event);
+    });
+
+    clear.addEventListener('click', () => {
+      input.value = '';
+      clear.hidden = true;
+      input.focus();
+      const event = new CustomEvent('search', { detail: '' });
+      document.dispatchEvent(event);
+    });
+  });
+</script>

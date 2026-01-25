@@ -6,13 +6,9 @@
 @layer base {
 
   html {
-    overflow-y: scroll;
     color-scheme: light;
-   
     @apply font-sans ;
   }
-
-
 
   body {
     @apply antialiased font-sans bg-black text-white;
@@ -27,3 +23,28 @@
   }
 
 }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(120,120,120,0.4) transparent;
+  }
+
+  /* Chrome, Edge, Safari */
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: rgba(120,120,120,0.4);
+    border-radius: 9999px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(120,120,120,0.6);
+  }
