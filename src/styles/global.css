@@ -6,7 +6,7 @@
 @layer base {
 
   html {
-    color-scheme: light;
+    color-scheme: dark;
     @apply font-sans ;
   }
 
@@ -19,7 +19,7 @@
   }
 
   h2 {
-    @apply text-2xl font-serif;
+    @apply font-serif text-2xl ;
   }
 
 }

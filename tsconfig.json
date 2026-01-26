@@ -1,18 +1,25 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
     "paths": {
-      "~/*": ["*"]
+      "@components/*": ["./src/components/*"],
+      "@layouts/*": ["./src/layouts/*"],
+      "@utilits/*": ["./src/utilits/*"],         
     },
     "target": "ES2020",          
     "lib": ["DOM", "ES2020"],    
     "module": "ESNext",          
     "moduleResolution": "Node",
-    "strict": true,              
-    "jsx": "preserve",           
+    "strict": true,                        
     "esModuleInterop": true,
-    "types": []
+    "types": [],
+    "plugins": [
+      {
+        "name": "@astrojs/ts-plugin"
+      },
+    ],
+    "verbatimModuleSyntax": true
   },
+  "extends": "astro/tsconfigs/base",
   "include": [".astro/types.d.ts", "**/*"],
   "exclude": ["dist"]
 }
