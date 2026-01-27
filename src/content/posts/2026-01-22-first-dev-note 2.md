@@ -1,7 +1,7 @@
 ---
 title: "4 Why I Started a Public Dev Journal"
 date: 2026-01-22
-category: "Astro"
+category: "javascript"
 tags: [meta, journaling]
 summary: "Why I Started a Public Dev Journal"
 draft: false

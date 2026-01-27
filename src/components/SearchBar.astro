@@ -1,14 +1,21 @@
 ---
+import Container from './Container.astro';
+
 interface Props {
   placeholderText?: string;
 }
+
 const { placeholderText = "Search..." } = Astro.props;
 ---
 
-<input
-  id="search"
-  type="text"
-  placeholder={placeholderText}
-  class="w-full max-w-md mb-8 px-4 py-2 rounded border"
-  autocomplete="off"
-/>
+<Container size="xl">
+  <div class="flex items-center justify-between"></div>
+    <input
+      id="search"
+      type="text"
+      placeholder={placeholderText}
+      class="w-full bg-black max-w-md mb-8 px-4 py-2 border-b hover: rounded-md"
+      autocomplete="off"
+    />
+  </div>
+</Container>
