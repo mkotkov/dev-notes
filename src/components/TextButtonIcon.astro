@@ -1,0 +1,14 @@
+---
+interface Props {
+  id?: string;
+  href: string;
+  text: string;
+  icon?: string;
+}
+const { href, text, icon, id } = Astro.props;
+---
+
+<a class="flex items-center gap-2 text-md font-light" href={href} id={id}>
+    <span class="material-symbols-rounded">{icon}</span>
+    {text}
+</a>

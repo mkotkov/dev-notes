@@ -5,45 +5,62 @@ import PageLayout from '@layouts/PageLayout.astro';
 import PostCard from '@components/PostCard.astro';
 import SearchBar from '@components/SearchBar.astro';
 import Nav from '@components/Nav.astro';
+import Container from "@components/Container.astro";
 
 const posts = await getCollection("posts", ({ data }: { data: { draft?: boolean } }) => !data.draft);
 posts.sort((a: { data: { date: { getTime: () => number; }; }; }, b: { data: { date: { getTime: () => number; }; }; }) => b.data.date.getTime() - a.data.date.getTime());
 ---
-
+<!-- Main home page structure -->
 <PageLayout title="dev-notes">
-
-  <SearchBar placeholderText="Search posts"/>
-
-  <div class="flex w-full min-h-screen">
-    <Nav />
-
-    <div class="w-xl">
-      <div class="mb-12">
-        <h2 class="text-4xl font-semibold mb-4">Recent Posts</h2>
-      </div>
+  
+  <!-- Search bar -->
+  <Container size="lg">
+    <SearchBar placeholderText="Search posts"/>
+  </Container>
+  
+  <!-- Main content area -->
+  <Container size="lg">
+    <div class="flex w-full min-h-screen">
       
-      <!-- posts conteiner -->
-      <div class="grid grid-cols-2 gap-4" data-posts>
-        {posts.map((post: typeof posts[number]) => (
-          // post
-          <PostCard
-            title={post.data.title}
-            category={post.data.category}
-            summary={post.data.summary}
-            date={post.data.date}
-            slug={post.slug}
-            tags={post.data.tags}
-          />
-        ))}
-      </div>
-      
-      <div class="mt-4 text-center text-gray-500" hidden data-no-results>
-            Nothing found
+      <!-- Navigation sidebar -->
+      <Nav />
+
+      <!-- post grid area -->
+      <div class="w-xl">
+        
+        <!-- Title -->
+        <div class="mb-12">
+          <h2 class="text-4xl font-semibold mb-4">Recent Posts</h2>
+        </div>
+
+        <!-- posts container -->
+        <div class="grid grid-cols-2 gap-4" data-posts>
+
+          {posts.map((post: typeof posts[number]) => (      
+            // post props
+            <PostCard
+              title={post.data.title}
+              category={post.data.category}
+              summary={post.data.summary}
+              date={post.data.date}
+              slug={post.slug}
+              tags={post.data.tags}
+            />
+          ))}
+
+        </div>
+        
+        <!-- no results message -->
+        <div class="mt-4 text-center text-gray-500" hidden data-no-results>
+              Nothing found
+        </div>
+
       </div>
 
     </div>
-  </div>
-
+  </Container>
+  
 </PageLayout>
 
+<!--Additional scripts -->
 <script type="module" src="../../src/scripts/search.js"></script>

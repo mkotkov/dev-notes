@@ -12,13 +12,13 @@ const { title, date, slug, tags, summary, category } = Astro.props;
 ---
 
 <article
-  class="w-xl border rounded-xl p-5"
+  class="w-xl border rounded-xl p-5 hover:bg-gray-950 transition-colors duration-200 ease-in-out"
   data-post
   data-category = {category?.toLowerCase()}
   data-title={title}
   data-tags={tags?.join(' ') ?? ''}
 >
-  <h3 class="text-2xl font-semibold">
+  <h3 class="text-2xl font-serif mb-2 font-semibold">
     <a href={`/posts/${slug}`}>{title}</a>
   </h3>
 
@@ -26,12 +26,14 @@ const { title, date, slug, tags, summary, category } = Astro.props;
 
   <time class="text-sm text-gray-400">{date.toLocaleDateString("en-EN")}</time>
 
-  {tags && (
+  {(tags || category) && (
     <ul class="flex gap-2 mt-2">
-      {tags.map(tag => (
+      {tags?.map(tag => (
         <li class="text-xs bg-gray-700 px-2 py-1 rounded">{tag}</li>
       ))}
-      <li class="text-xs bg-gray-500 px-2 py-1 rounded">{category}</li>
+      {category && (
+        <li class="text-xs bg-gray-500 px-2 py-1 rounded">{category}</li>
+      )}
     </ul>
   )}
 </article>

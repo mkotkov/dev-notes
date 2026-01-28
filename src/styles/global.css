@@ -11,7 +11,7 @@
   }
 
   body {
-    @apply antialiased font-sans bg-black text-white;
+    @apply antialiased font-sans bg-gray-950 text-white;
   }
 
   h1 {
@@ -22,6 +22,21 @@
     @apply font-serif text-2xl ;
   }
 
+  .post-content h1 {
+    @apply text-5xl;
+  }
+
+  .post-content h2 {
+    @apply text-3xl mb-4 mt-8;
+  }
+
+  .post-content p {
+    @apply text-base leading-7 text-gray-300;
+  }
+
+  .post-content ul{
+    @apply list-disc list-inside my-4;
+  }
 }
 
   /* Firefox */

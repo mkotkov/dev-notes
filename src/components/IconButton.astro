@@ -1,0 +1,11 @@
+---
+interface Props {
+  href: string;
+  icon: string;
+}
+const { href, icon } = Astro.props;
+---
+
+<a href={href} class="flex border rounded-xl p-2 hover:bg-gray-900">
+    <span class="material-symbols-rounded text-md">{icon}</span>
+</a>

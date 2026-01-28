@@ -1,15 +1,28 @@
 ---
+import Container from '@components/Container.astro';
 import '../styles/global.css';
 import PageLayout from './PageLayout.astro';
+import TextButtonIcon from '@components/TextButtonIcon.astro';
+
 
 const { title, date, tags} = Astro.props;
 
 ---
 <PageLayout title={title}>
-      <article>
-        <header>
-          <h1 class="post-title">{title}</h1>
 
+  <Container size="2xl">
+    <!-- Back to home link -->
+     <TextButtonIcon href="/" text="Back to home" icon="arrow_back" />
+
+    <!-- Post title and metadata -->
+    <article class="mx-auto my-12 max-w-prose">
+      <header class="mb-8">
+
+        <!-- Post title -->
+        <h1 class="text-5xl mb-6 leading-tight">{title}</h1>
+        
+        <!-- Post date and tags -->
+        <div class="flex flex-row gap-2 md:flex-row md:items-center md:justify-between items-center">
           <p class="post-date">
             <time datetime={date.toISOString()}>
               {date.toDateString()}
@@ -17,16 +30,19 @@ const { title, date, tags} = Astro.props;
           </p>
 
           {tags && (
-            <ul class="post-tags">
-              {tags.map((tag) => (
-                <li><span>{tag}</span></li>
+            <ul class="flex gap-2 mt-2">
+              {tags.map((tag: unknown) => (
+                <li class="text-xs bg-gray-700 px-2 py-1 rounded"><span>{tag}</span></li>
               ))}
             </ul>
           )}
         </header>
+      </div>
+      <section class="post-content leading-relaxed">
+        <slot />
+      </section>
+      
+    </article>
+  </Container>
 
-        <section class="post-content">
-          <slot />
-        </section>
-      </article>
 </PageLayout>

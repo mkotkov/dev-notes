@@ -1,28 +1,46 @@
 ---
 import Container from "./Container.astro";
+import IconButton from "./IconButton.astro";
 ---
-<header
-  id="header"
-  class="fixed top-0 w-full max-w-7xl h-18 z-50 py-4
-        backdrop-blur-lg
-        bg-black/20
-        rounded-xl 
-        border-white/20
-        shadow-sm"
->
-  <Container size="xl">
-    <div class="flex h-18 items-center justify-between">
-      <a href="/" class="flex items-center gap-2">
-        <img
-          src="/logo.svg"
-          alt="Dev Notes"
-          class="h-8 w-auto"
-        />
-      </a>
+<Container size="2xl">
+  <header
+    id="header"
+    class="fixed top-0 w-full max-w-7xl h-18 z-50 py-4
+          backdrop-blur-lg
+          bg-black/20
+          rounded-xl 
+          border-white/20
+          shadow-sm"
+  >
+  
+      <div class="flex h-18 items-center justify-between">
+        <a href="/" class="flex items-center gap-2">
+          <img
+            src="/logo.svg"
+            alt="Dev Notes"
+            class="h-8 w-auto"
+          />
+        </a>
 
-      <p class="text-sm text-whit/60">
-        by m.kotkov
-      </p>
-    </div>
-  </Container>
-</header>
+        <div class="flex gap-5 items-center ">
+          
+            <IconButton
+            icon="identity_platform"
+            href="https://github.com/mkotkov"
+          />
+
+          <IconButton
+            icon="folder_data"
+            href="https://github.com/mkotkov/dev-notes"
+          />   
+
+          <IconButton
+            icon="mode_comment"
+            href="https://github.com/mkotkov/dev-notes/discussions"
+          />
+
+        </div>
+
+      </div>
+  </header>
+</Container>
