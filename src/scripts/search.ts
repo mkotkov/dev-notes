@@ -68,3 +68,5 @@ resetBtn?.addEventListener('click', (e) => {
     noResults.hidden = true;
   }
 });
+
+console.log("Search script loaded");
