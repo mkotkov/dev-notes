@@ -24,15 +24,15 @@ export const CATEGORIES: category = [
 
 export const TAGS: tags = [
   {
-    TAG: "web",
-    NAME: "#web",
-  },
-  {
-    TAG: "html",
-    NAME: "#html",
-  },
-   {
     TAG: "base",
     NAME: "#base",
   },
+  {
+    TAG: "start",
+    NAME: "#start",
+  },
+  // {
+  //   TAG: "web",
+  //   NAME: "#web",
+  // },
 ]

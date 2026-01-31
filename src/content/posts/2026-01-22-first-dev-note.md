@@ -2,7 +2,7 @@
 title: "Why I Started a Public Dev Journal"
 date: 2026-01-22
 category: "Base"
-tags: [base]
+tags: [base, start]
 summary: "Why I Started a Public Dev Journal"
 draft: false
 ---
