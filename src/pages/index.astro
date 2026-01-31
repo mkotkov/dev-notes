@@ -3,7 +3,6 @@ import { getCollection } from "astro:content";
 import '../styles/global.css';
 import PageLayout from '@layouts/PageLayout.astro';
 import PostCard from '@components/PostCard.astro';
-import SearchBar from '@components/SearchBar.astro';
 import Nav from '@components/Nav.astro';
 import Container from "@components/Container.astro";
 
@@ -13,13 +12,9 @@ posts.sort((a: { data: { date: { getTime: () => number; }; }; }, b: { data: { da
 <!-- Main home page structure -->
 <PageLayout title="dev-notes">
   
-  <!-- Search bar -->
-  <Container size="lg">
-    <SearchBar placeholderText="Search posts"/>
-  </Container>
   
   <!-- Main content area -->
-  <Container size="lg">
+  <Container size="xl">
     <div class="flex w-full min-h-screen">
       
       <!-- Navigation sidebar -->
@@ -63,4 +58,4 @@ posts.sort((a: { data: { date: { getTime: () => number; }; }; }, b: { data: { da
 </PageLayout>
 
 <!--Additional scripts -->
-<script type="module" src=`${import.meta.env.BASE_URL}/scripts/search.js`></script>
+<script type="module" src=`${import.meta.env.BASE_URL}/scripts/filters.js`></script>

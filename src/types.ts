@@ -5,3 +5,8 @@ export type category = {
   TAGS?: string[]
   iconClass?: string
 }[]
+
+export type tags = {
+  NAME: string
+  TAG: string
+}[]

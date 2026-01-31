@@ -1,8 +1,8 @@
 ---
-title: "4 Why I Started a Public Dev Journal"
+title: "Why I Started a Public Dev Journal"
 date: 2026-01-22
-category: "javascript"
-tags: [meta, journaling]
+category: "Base"
+tags: [base]
 summary: "Why I Started a Public Dev Journal"
 draft: false
 ---

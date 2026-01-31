@@ -15,3 +15,4 @@ const posts = defineCollection({
 export const collections = {
   posts,
 };
+

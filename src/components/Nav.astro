@@ -1,22 +1,51 @@
 ---
-import { CATEGORIES } from "@constants"
+import { CATEGORIES, TAGS } from "@constants"
+import Container from "@components/Container.astro";
+import SearchBar from "./SearchBar.astro";
+import TextButtonIcon from './TextButtonIcon.astro';
 ---
 
-<aside class="max-w-64 mr-8 mt-4lg:block">
-        <nav class="space-y-2 border rounded-xl p-4 ">
-          {CATEGORIES.map((category) => {
-            return (
-              <div
-                class="flex items-center space-x-3 hover:bg-gray-800 rounded cursor-pointer p-2"
-                data-category={category.NAME?.toLowerCase()}
-              >
-                <span class={`material-symbols-rounded ${category.iconClass ?? "text-3xl"}`}>
-                  {category.ICON}
-                </span>
-                <div class="block p-2">{category.NAME}</div>
-              </div>
-            );
-          })}
+<aside class="xl:block max-w-80 max-h-max border rounded-xl border-gray-600 p-8 mr-8">
+        <nav class="space-y-2">
+          <div class="flex items-center justify-between mb-4 ">
+            <p class="font-semibold text-lg">Filters</p>
+            <TextButtonIcon 
+              id="reset-filters" 
+              href="#" 
+              text="Reset filters" 
+              icon="filter_alt_off" /> 
+          </div>
+            <!-- Search bar -->
+          <Container size="lg">
+            <SearchBar placeholderText="Search posts"/>
+          </Container>
+          <div class="mb-4 font-semibold text-lg">Categories</div>
+          <div class="mb-16 space-y-1">
+            {CATEGORIES.map((category) => {
+              return (
+                <div
+                  class="flex items-center space-x-3 hover:bg-gray-800 rounded cursor-pointer p-2"
+                  data-category={category.NAME?.toLowerCase()}
+                >
+                  <span class={`material-symbols-rounded ${category.iconClass ?? "text-3xl"}`}>
+                    {category.ICON}
+                  </span>
+                  <div class="block p-2">{category.NAME}</div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div class="mt-6 mb-4 font-semibold text-lg">Tags</div>
+          <div class="flex flex-wrap gap-2">
+            {TAGS.map((tags) => {
+              return (
+                <div >
+                  <div class="flex-auto items-center space-x-3 border rounded-md hover:bg-gray-800 cursor-pointer p-2" data-tag={tags.TAG}>{tags.NAME}</div>
+                </div>
+              );
+            })}
+          </div>
       </nav>
 
 </aside>

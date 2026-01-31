@@ -1,6 +1,5 @@
 ---
 import Container from './Container.astro';
-import TextButtonIcon from './TextButtonIcon.astro';
 
 interface Props {
   placeholderText?: string;
@@ -18,11 +17,5 @@ const { placeholderText = "Search..." } = Astro.props;
       class="w-full placeholder:text-gray-600 bg-gray-950 max-w-md mb-8 p-2 border-b active:rounded-md"
       autocomplete="off"
     />
-
-    <TextButtonIcon 
-      id="reset-filters" 
-      href="#" 
-      text="Reset filters" 
-      icon="filter_alt_off" />
   </div>
 </Container>
