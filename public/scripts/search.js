@@ -1,11 +1,11 @@
-const input = document.querySelector<HTMLInputElement>('#search');
-const posts = Array.from(document.querySelectorAll<HTMLElement>('[data-post]'));
-const noResults = document.querySelector<HTMLElement>('[data-no-results]');
-const categories = Array.from(document.querySelectorAll<HTMLElement>('[data-category]'));
-const resetBtn = document.querySelector<HTMLElement>('#reset-filters');
+const input = document.querySelector('#search');
+const posts = Array.from(document.querySelectorAll('[data-post]'));
+const noResults = document.querySelector('[data-no-results]');
+const categories = Array.from(document.querySelectorAll('[data-category]'));
+const resetBtn = document.querySelector('#reset-filters');
 
 let activeQuery = '';
-let activeCategory: string | null = null;
+let activeCategory = null;
 
 function applyFilters() {
   let found = false;
@@ -34,7 +34,7 @@ function applyFilters() {
 }
 
 /* Search */
-input?.addEventListener('input', () => {
+input.addEventListener('input', () => {
   activeQuery = input.value.toLowerCase();
   applyFilters();
 });
@@ -52,7 +52,7 @@ categories.forEach(catEl => {
 });
 
 /* Reset */
-resetBtn?.addEventListener('click', (e) => {
+resetBtn.addEventListener('click', (e) => {
   console.log('Resetting filters');
   e.preventDefault();
 
@@ -69,4 +69,3 @@ resetBtn?.addEventListener('click', (e) => {
   }
 });
 
-console.log("Search script loaded");
