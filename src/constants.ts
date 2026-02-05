@@ -31,8 +31,20 @@ export const TAGS: tags = [
     TAG: "start",
     NAME: "#start",
   },
-  // {
-  //   TAG: "web",
-  //   NAME: "#web",
-  // },
+  {
+    TAG: "frameworks",
+    NAME: "#frameworks",
+  },
+  {
+    TAG: "start",
+    NAME: "#start",
+  },
+  {
+    TAG: "react_native",
+    NAME: "#react_native",
+  },
+  {
+    TAG: "expo",
+    NAME: "#expo",
+  }
 ]
